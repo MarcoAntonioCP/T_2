@@ -14,7 +14,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+/*metodo post*/
 router.post('/persona', async(req, res, next) => {
   var params = req.body;
   params["fechaRegistro"] = new Date();
@@ -22,12 +22,12 @@ router.post('/persona', async(req, res, next) => {
   var result = await persona.save();
   res.status(200).json(result);
 });
-
+/*metodo get*/
 router.get("/persona", async(req, res) => {
   var list = await PERSONA.find({});
   res.status(200).json(list);
 });
-
+/*metodo get*/
 router.patch('/persona', async(req, res, next) => {
   var params = req.body;
   var id = req.query.id;
@@ -40,7 +40,7 @@ router.patch('/persona', async(req, res, next) => {
   var result = await PERSONA.findOneAndUpdate({_id: id},params);
   res.status(200).json(result)
 });
-
+/*metodo delte*/
 router.delete("/persona", async(req, res) => {
   var id = req.query.id;
   if(id == null){
@@ -55,19 +55,19 @@ router.delete("/persona", async(req, res) => {
 
 
 
-
+/*metodo post*/
 router.post('/mascota', async(req, res, next) => {
   var params = req.body;
   var mascota = new MASCOTA(params);
   var result = await mascota.save();
   res.status(200).json(result);
 });
-
+/*metodo get*/
 router.get("/mascota", async(req, res) => {
   var list = await MASCOTA.find({});
   res.status(200).json(list);
 });
-
+/*metodo patch*/
 router.patch('/mascota', async(req, res, next) => {
   var params = req.body;
   var id = req.query.id;
@@ -80,7 +80,7 @@ router.patch('/mascota', async(req, res, next) => {
   var result = await MASCOTA.findOneAndUpdate({_id: id},params);
   res.status(200).json(result)
 });
-
+/*metodo delete*/
 router.delete("/mascota", async(req, res) => {
   var id = req.query.id;
   if(id == null){
